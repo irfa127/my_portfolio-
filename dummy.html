@@ -47,7 +47,6 @@
       header {
         justify-content: space-between;
         position: relative;
-        left: 100px;
 
         box-shadow: 1px 1px 1px 1px bisque;
       }
@@ -135,9 +134,10 @@
         margin-left: 800px;
         position: relative;
         bottom: 200px;
-        left: 200px;
+        left: 100px;
         object-fit: cover;
         border-radius: 50%;
+        box-shadow: 2px 2px 5px 7px black;
       }
       button {
         position: relative;
@@ -189,11 +189,154 @@
       }
       section {
         background-color: #020617;
-        height: 100vh;
-        position: absolute;
-        left: -180px;
-        top: 20vh;
+        min-height: 100vh;
         width: 100%;
+        padding: 80px 120px;
+        position: relative;
+      }
+      section .about {
+        padding: 60px;
+      }
+
+      p {
+        text-align: center;
+        color: #f6f6fb;
+        line-height: 40px;
+        font-family: sans-serif;
+        font-weight: 500;
+        font-size: x-large;
+        width: 50%;
+        margin-left: 600px;
+        margin-top: -200px;
+      }
+      .about h2 {
+        margin-left: 600px;
+        color: aliceblue;
+      }
+      #root {
+        width: 450px;
+        height: 450px;
+        border-radius: 11px;
+
+        position: relative;
+        top: 190px;
+      }
+      #skills {
+        background-color: aliceblue;
+        width: 1500px;
+        height: 1500px;
+        position: relative;
+        left: -130px;
+        top: 200px;
+      }
+      .my_work > h1 {
+        text-transform: capitalize;
+        display: flex;
+        justify-content: center;
+        font-family: sans-serif;
+        color: rgb(202, 212, 212);
+
+        position: relative;
+        top: 50px;
+      }
+
+      .tech-grid {
+        display: grid;
+        padding: 25px;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 25px;
+        width: 800px;
+        margin: auto;
+        background-color: #9db7d1;
+        background: -webkit-linear-gradient(
+          40deg,
+          #9db7d1,
+          rgb(97, 97, 121),
+          rgb(4, 73, 73)
+        );
+        border-radius: 21px;
+      }
+
+      .tech {
+        margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 25px;
+        border-radius: 14px;
+        background: #ffffff;
+      }
+
+      .tech img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+      }
+
+      .tech:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      #my_project {
+        width: 1500px;
+        height: 1500px;
+        background-color: #02080e;
+        position: relative;
+        bottom: 650px;
+        left: -120px;
+      }
+      #line {
+        width: 5px;
+        height: 1050px;
+        background-color: #f6f6fb;
+        position: relative;
+        left: 750px;
+        top: 200px;
+      }
+      #line i {
+        position: relative;
+        right: 16px;
+        background-color: #f6f6fb;
+        top: -120px;
+        border-radius: 5px;
+        margin-top: 200px;
+      }
+      .project_deatail {
+        color: white;
+        display: flex;
+        position: relative;
+        right: 570px;
+        top: -900px;
+        margin-top: 250px;
+        display: flex;
+        height: 100%;
+      }
+      .project_deatailone > P {
+        border: 2px solid white;
+        box-shadow: 2px 2px 5px 7px white;
+        width: 670px;
+        height: 240px;
+        font-family: "Courier New", Courier, monospace;
+        font-weight: 200;
+        font-size: medium;
+        display: flex;
+        line-height: 30px;
+
+        flex-direction: column-reverse;
+      }
+      .project_deatail:nth-child(odd) {
+        justify-content: flex-start;
+      }
+
+      .project_deatail:nth-child(even) {
+        position: relative;
+        left: 200px;
+      }
+      #my_project>h2{
+        top: 80px;
+        position: relative;
+        left: 80px;
+       
       }
     </style>
   </head>
@@ -221,7 +364,7 @@
     </div>
 
     <div class="image">
-      <img src="./assests/WhatsApp Image 2025-12-27 at 1.28.26 AM.jpeg" />
+      <img src="assests/WhatsApp Image 2025-12-27 at 1.28.26 AM.jpeg" />
     </div>
 
     <button>About me</button>
@@ -239,8 +382,120 @@
       <div>
         <i class="fa-brands fa-square-instagram"></i>
       </div>
-      <section></section>
     </div>
+    <section class="about">
+      <h2>About Me</h2>
+      <img
+        id="root"
+        src="./assests/WhatsApp Image 2025-12-31 at 1.15.05 PM.jpeg"
+        alt="2"
+      />
+      <p>
+        I am a motivated trainee Web Developer who enjoys learning and building
+        simple, clean, and user-friendly websites. I have basic hands-on
+        experience with HTML, CSS, SQL, backend APIs, and GitHub, and I enjoy
+        practicing responsive layouts and small web applications. I am currently
+        learning JavaScript to improve my frontend logic and interactivity. I
+        regularly practice problem-solving and real-world examples to strengthen
+        my skills, and I am eager to learn, grow, and gain practical experience
+        in a professional environment.
+      </p>
+
+      <div id="skills">
+        <div class="my_work">
+          <h1>Technologies I've worked with</h1>
+          <div class="tech-grid">
+            <div class="tech">
+              <img src="./assests/image copy.png" />
+            </div>
+            <div class="tech">
+              <img src="./assests/image copy 2.png" />
+            </div>
+            <div class="tech">
+              <img src="./assests/image copy 3.png" />
+            </div>
+            <div class="tech">
+              <img src="./assests/image copy 4.png" />
+            </div>
+            <div class="tech">
+              <img src="./assests/image copy 5.png" />
+            </div>
+            <div class="tech">
+              <img src="./assests/image copy 6.png" />
+            </div>
+            <div class="tech">
+              <img src="./assests/image copy 7.png" />
+            </div>
+            <div class="tech">
+              <img src="./assests/image copy 8.png" />
+            </div>
+            <div class="tech">
+              <img src="./assests/image copy 9.png" />
+            </div>
+            <div class="tech">
+              <img src="./assests/image copy 10.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="my_project">
+        <h2>My Project</h2>
+        <div id="line">
+          <i class="fa-solid fa-code"></i>
+          <i class="fa-solid fa-code"></i>
+          <i class="fa-solid fa-code"></i>
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <div class="project_deatail">
+          <div class="project_deatailone">
+            <p>
+              A responsive English learning website focused on improving basic
+              English speaking and communication skills for beginners. Designed
+              with a clean and user-friendly interface, ensuring smooth
+              experience across desktop and mobile devices. Developed within 50
+              days as part of academy training. Technologies Used HTML • CSS •
+              Responsive Web Design
+            </p>
+          </div>
+        </div>
+        <div class="project_deatail">
+          <div class="project_deatailone">
+            <p>
+              A responsive English learning website focused on improving basic
+              English speaking and communication skills for beginners. Designed
+              with a clean and user-friendly interface, ensuring smooth
+              experience across desktop and mobile devices. Developed within 50
+              days as part of academy training. Technologies Used HTML • CSS •
+              Responsive Web Design
+            </p>
+          </div>
+        </div>
+        <div class="project_deatail">
+          <div class="project_deatailone">
+            <p>
+              ElderConnect is a responsive web application built to assist
+              elders by providing easy access to care-related services.
+              Developed using HTML, CSS, and responsive design, with backend API
+              integration to handle data operations. The project focuses on
+              usability, clean UI, and real-world problem solving.
+            </p>
+          </div>
+        </div>
+        <div class="project_deatail">
+          <div class="project_deatailone">
+            <p>
+              A responsive English learning website focused on improving basic
+              English speaking and communication skills for beginners. Designed
+              with a clean and user-friendly interface, ensuring smooth
+              experience across desktop and mobile devices. Developed within 50
+              days as part of academy training. Technologies Used HTML • CSS •
+              Responsive Web Design
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- don't touch this side -->
 
