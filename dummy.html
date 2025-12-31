@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Portfolio with Particles.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font: normal 75% Arial, Helvetica, sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      canvas {
+        display: block;
+        vertical-align: bottom;
+      }
+
+      #particles-js {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f6f6fb;
+        background-image: none;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+        z-index: 0;
+      }
+      .count-particles {
+        display: none;
+      }
+      header {
+        justify-content: space-between;
+        position: relative;
+        left: 100px;
+
+        box-shadow: 1px 1px 1px 1px bisque;
+      }
+      h2 {
+        position: absolute;
+        left: 30px;
+        font-size: 30px;
+        font-family: sans-serif;
+        color: rgb(22, 22, 83);
+        font-weight: 700;
+      }
+      h2:hover {
+        color: orange;
+        cursor: pointer;
+      }
+      header,
+      ul {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        height: 70px;
+        background-color: white;
+      }
+      ul > li {
+        list-style-type: none;
+        font-family: sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+      }
+      ul {
+        position: absolute;
+        right: 250px;
+      }
+      ul > li:hover {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      .name {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        justify-content: center;
+        margin-left: 290px;
+        margin-top: 200px;
+        height: 200px;
+      }
+      #me {
+        font-size: x-large;
+        font-family: sans-serif;
+      }
+      .name h1 {
+        font-family: sans-serif;
+        font-size: xx-large;
+        font-weight: 800;
+        line-height: 70px;
+
+        color: rgb(22, 22, 83);
+      }
+      .name {
+        position: relative;
+        z-index: 2;
+      }
+
+      span {
+        position: absolute;
+        bottom: 5px;
+
+        font-family: "Courier New", Courier, monospace;
+        font-weight: 700;
+        font-size: x-large;
+        color: rgba(120, 59, 59, 0.868);
+        background: -webkit-linear-gradient(
+          40deg,
+          rgb(213, 46, 46),
+          rgb(52, 52, 142),
+          rgb(61, 188, 61)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .image img {
+        width: 350px;
+        height: 350px;
+        margin-left: 800px;
+        position: relative;
+        bottom: 200px;
+        left: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+      button {
+        position: relative;
+        z-index: 1;
+        left: 280px;
+
+        padding: 10px;
+        border-radius: 11px;
+        border: none;
+
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        font-size: x-large;
+
+        background: -webkit-linear-gradient(
+          40deg,
+          rgb(213, 46, 46),
+          rgb(52, 52, 142),
+          rgb(61, 188, 61)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        bottom: 340px;
+        box-shadow: 2px 2px 2px 2px black;
+      }
+
+      .connect {
+        display: flex;
+        gap: 25px;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        bottom: 320px;
+        left: 280px;
+      }
+      .connect > div {
+        border-radius: 50%;
+        border: 2px solid black;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+      }
+      i {
+        font-size: xx-large;
+        border-radius: 2000px;
+        color: rgb(36, 35, 35);
+      }
+      section {
+        background-color: #020617;
+        height: 100vh;
+        position: absolute;
+        left: -180px;
+        top: 20vh;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+    <div class="content">
+      <header>
+        <h2>Irfana Nasrin</h2>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Skils</li>
+          <li>Education</li>
+          <li>Project</li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="name">
+      <h1>
+        Hi There,<br />
+        I'm Irfana Nasrin
+      </h1>
+      <span id="my_tallent"></span>
+    </div>
+
+    <div class="image">
+      <img src="./assests/WhatsApp Image 2025-12-27 at 1.28.26 AM.jpeg" />
+    </div>
+
+    <button>About me</button>
+
+    <div class="connect">
+      <div>
+        <i class="fa-brands fa-square-linkedin"></i>
+      </div>
+      <div>
+        <i class="fa-brands fa-square-github"></i>
+      </div>
+      <div>
+        <i class="fa-regular fa-message"></i>
+      </div>
+      <div>
+        <i class="fa-brands fa-square-instagram"></i>
+      </div>
+      <section></section>
+    </div>
+
+    <!-- don't touch this side -->
+
+    <!-- <div class="count-particles">
+      <span class="js-count-particles">--</span> particles
+    </div> -->
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+
+    <script src="particle.js"></script>
+  </body>
+</html>
