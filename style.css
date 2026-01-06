@@ -92,6 +92,9 @@ canvas {
   padding: 0 20px;
   width: 100%;
 }
+.container>h2{
+  margin-left: 200px;
+}
 
 .section-title {
   text-align: center;
