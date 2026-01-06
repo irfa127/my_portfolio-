@@ -2,257 +2,257 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Portfolio with Particles.js</title>
+    <title>Portfolio | Irfana Nasrin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
   </head>
+
   <body>
+    <!-- Background Particles -->
     <div id="particles-js"></div>
-    <div class="content">
-      <header>
+
+    <!-- Header / Navbar -->
+    <header class="main-header">
+      <div class="logo">
         <h2>Irfana Nasrin</h2>
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Skils</li>
-          <li>Education</li>
-          <li>Project</li>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Project</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-      </header>
-    </div>
+      </nav>
+    </header>
 
-    <div class="name">
-      <h1>
-        Hi There,<br />
-        I'm Irfana Nasrin
-      </h1>
-      <span id="my_tallent"></span>
-    </div>
+    <!-- Main Content -->
+    <main>
+      <!-- Home Section -->
+      <section id="home" class="section-home">
+        <div class="home-text">
+          <h1>
+            Hi There,<br />
+            I'm Irfana Nasrin
+          </h1>
+          <span id="typewriter-text"></span>
+          <br><br>
+          <a href="#about" class="btn-primary">About me</a>
 
-    <div class="image">
-      <img src="assests/WhatsApp Image 2025-12-27 at 1.28.26 AM.jpeg" />
-    </div>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/irfana-nasrin-1a4b22385" target="_blank" aria-label="LinkedIn">
+              <i class="fa-brands fa-square-linkedin"></i>
+            </a>
+            <a href="https://github.com/irfa127" target="_blank" aria-label="GitHub">
+              <i class="fa-brands fa-square-github"></i>
+            </a>
+            <a href="mailto:nasrinirfana42@gmail.com" aria-label="Email">
+              <i class="fa-regular fa-message"></i>
+            </a>
+            <a href="#" aria-label="Instagram"> <!-- Add actual link if available -->
+              <i class="fa-brands fa-square-instagram"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="home-image">
+          <img src="assets/WhatsApp Image 2026-01-06 at 3.55.25 PM.jpeg" alt="Irfana Nasrin" />
+        </div>
+      </section>
 
-    <button>About me</button>
+      <!-- About Section -->
+      <section id="about" class="section-about">
+        <div class="container hover-section">
+          <h2>About Me</h2>
+          
+          <div class="about-content">
+              <div class="about-img">
+                 <img src="./assets/WhatsApp Image 2025-12-31 at 1.15.05 PM.jpeg" alt="About Me Image" />
+              </div>
+              <div class="about-text">
+                <p>
+                  I am a motivated trainee Web Developer who enjoys learning and building
+                  simple, clean, and user-friendly websites. I have basic hands-on
+                  experience with HTML, CSS, SQL, backend APIs, and GitHub, and I enjoy
+                  practicing responsive layouts and small web applications. I am currently
+                  learning JavaScript to improve my frontend logic and interactivity. I
+                  regularly practice problem-solving and real-world examples to strengthen
+                  my skills, and I am eager to learn, grow, and gain practical experience
+                  in a professional environment.
+                </p>
+              </div>
+          </div>
+        </div>
+      </section>
 
-    <div class="connect">
-      <div>
-        <i class="fa-brands fa-square-linkedin"></i>
-      </div>
-      <div>
-        <i class="fa-brands fa-square-github"></i>
-      </div>
-      <div>
-        <i class="fa-regular fa-message"></i>
-      </div>
-      <div>
-        <i class="fa-brands fa-square-instagram"></i>
-      </div>
-    </div>
-    <section class="about">
-      <h2>About Me</h2>
-      <img
-        id="root"
-        src="./assests/WhatsApp Image 2025-12-31 at 1.15.05 PM.jpeg"
-        alt="2"
-      />
-      <p>
-        I am a motivated trainee Web Developer who enjoys learning and building
-        simple, clean, and user-friendly websites. I have basic hands-on
-        experience with HTML, CSS, SQL, backend APIs, and GitHub, and I enjoy
-        practicing responsive layouts and small web applications. I am currently
-        learning JavaScript to improve my frontend logic and interactivity. I
-        regularly practice problem-solving and real-world examples to strengthen
-        my skills, and I am eager to learn, grow, and gain practical experience
-        in a professional environment.
-      </p>
-
-      <div id="skills">
-        <div class="my_work">
-          <h1>Technologies I've worked with</h1>
+      <!-- Skills Section -->
+      <section id="skills" class="section-skills">
+        <h2 class="section-title">Technologies I've worked with</h2>
+        <div class="container container-skills">
           <div class="tech-grid">
-            <div class="tech">
-              <img src="./assests/image copy.png" />
-            </div>
-            <div class="tech">
-              <img src="./assests/image copy 2.png" />
-            </div>
-            <div class="tech">
-              <img src="./assests/image copy 3.png" />
-            </div>
-            <div class="tech">
-              <img src="./assests/image copy 4.png" />
-            </div>
-            <div class="tech">
-              <img src="./assests/image copy 5.png" />
-            </div>
-            <div class="tech">
-              <img src="./assests/image copy 6.png" />
-            </div>
-            <div class="tech">
-              <img src="./assests/image copy 7.png" />
-            </div>
-            <div class="tech">
-              <img src="./assests/image copy 8.png" />
-            </div>
-            <div class="tech">
-              <img src="./assests/image copy 9.png" />
-            </div>
-            <div class="tech">
-              <img src="./assests/image copy 10.png" />
-            </div>
+            <div class="tech-card"><img src="./assets/image copy.png" alt="Tech 1" /></div>
+            <div class="tech-card"><img src="./assets/image copy 2.png" alt="Tech 2" /></div>
+            <div class="tech-card"><img src="./assets/image copy 3.png" alt="Tech 3" /></div>
+            <div class="tech-card"><img src="./assets/image copy 4.png" alt="Tech 4" /></div>
+            <div class="tech-card"><img src="./assets/image copy 5.png" alt="Tech 5" /></div>
+            <div class="tech-card"><img src="./assets/image copy 6.png" alt="Tech 6" /></div>
+            <div class="tech-card"><img src="./assets/image copy 7.png" alt="Tech 7" /></div>
+            <div class="tech-card"><img src="./assets/image copy 8.png" alt="Tech 8" /></div>
+            <div class="tech-card"><img src="./assets/image copy 9.png" alt="Tech 9" /></div>
+            <div class="tech-card"><img src="./assets/image copy 10.png" alt="Tech 10" /></div>
+          </div>
+
+          <div class="soft-skills">
+             <h3>My Skills</h3>
+             <div class="skill-tags">
+               <div class="tag">Tech</div>
+               <div class="tag">Problem-solving</div>
+               <div class="tag">English</div>
+               <div class="tag">Life skills</div>
+             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div id="my_project">
-        <h2>My Project</h2>
-        <div id="line">
-          <i class="fa-solid fa-code"></i>
-          <i class="fa-solid fa-code"></i>
-          <i class="fa-solid fa-code"></i>
-          <i class="fa-solid fa-code"></i>
+      <!-- Projects Section -->
+      <section id="projects" class="section-projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="container">
+            <div class="projects-wrapper">
+                
+                <!-- Project 1 -->
+                <article class="project-card">
+                   <div class="timeline-line"></div>
+                   <div class="project-icon"><i class="fa-solid fa-code"></i></div>
+                   <div class="project-info">
+                        <h3>English Learning Website</h3>
+                        <p>
+                          A responsive English learning website focused on improving basic
+                          English speaking and communication skills for beginners. Designed
+                          with a clean and user-friendly interface, ensuring smooth
+                          experience across desktop and mobile devices. Developed within 50
+                          days as part of academy training. Technologies Used HTML • CSS •
+                          Responsive Web Design
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/irfa127/Speak_Smart-static-website.git" target="_blank">
+                                <i class="fa-brands fa-github"></i> GitHub
+                            </a>
+                            <a href="https://irfa127.github.io/Speak_Smart-static-website/" target="_blank">
+                                <i class="fa-solid fa-globe"></i> Live Demo
+                            </a>
+                        </div>
+                   </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card">
+                   <div class="timeline-line"></div>
+                  <div class="project-icon"><i class="fa-solid fa-code"></i></div>
+                  <div class="project-info">
+                       <h3>Data & API Project</h3>
+                       <p>
+                         A small self-learning full-stack web application built using HTML,
+                         CSS, and JavaScript with responsive design, along with backend
+                         APIs connected to a PostgreSQL database. This project helped me
+                         understand frontend-backend integration, API handling, and basic
+                         database operations.
+                       </p>
+                       <div class="project-links">
+                           <a href="https://github.com/irfa127/Speak_Smart-static-website.git" target="_blank">
+                               <i class="fa-brands fa-github"></i> GitHub
+                           </a>
+                           <a href="https://irfa127.github.io/Speak_Smart-static-website/" target="_blank">
+                               <i class="fa-solid fa-globe"></i> Live Demo
+                           </a>
+                       </div>
+                  </div>
+               </article>
+
+               <!-- Project 3 -->
+               <article class="project-card">
+                   <div class="timeline-line"></div>
+                  <div class="project-icon"><i class="fa-solid fa-code"></i></div>
+                  <div class="project-info">
+                       <h3>ElderConnect</h3>
+                       <p>
+                         ElderConnect is a responsive web application built to assist
+                         elders by providing easy access to care-related services.
+                         Developed using HTML, CSS, and responsive design, with backend API
+                         integration to handle data operations. The project focuses on
+                         usability, clean UI, and real-world problem solving.
+                       </p>
+                       <div class="project-links">
+                           <a href="https://github.com/irfa127/ElderConnect.git" target="_blank">
+                               <i class="fa-brands fa-github"></i> GitHub
+                           </a>
+                           <a href="https://irfa127.github.io/ElderConnect/" target="_blank">
+                               <i class="fa-solid fa-globe"></i> Live Demo
+                           </a>
+                       </div>
+                  </div>
+               </article>
+
+               <!-- Project 4 -->
+               <article class="project-card">
+                   <div class="timeline-line no-border"></div>
+                  <div class="project-icon"><i class="fa-solid fa-code"></i></div>
+                  <div class="project-info">
+                       <h3>Online Calculator</h3>
+                       <p>
+                         Online Calculator A self-learned project built using HTML, CSS,
+                         and JavaScript. Allows users to perform basic calculations through
+                         an interactive interface. Helped me practice DOM manipulation,
+                         event handling, and JavaScript logic.
+                       </p>
+                       <div class="project-links">
+                           <a href="https://github.com/irfa127/online-calculator.git" target="_blank">
+                               <i class="fa-brands fa-github"></i> GitHub
+                           </a>
+                           <a href="https://glowing-lamington-f354b2.netlify.app/" target="_blank">
+                               <i class="fa-solid fa-globe"></i> Live Demo
+                           </a>
+                       </div>
+                  </div>
+               </article>
+            </div>
         </div>
-        <div class="project_deatail">
-          <div class="project_deatailone">
-            <p>
-              A responsive English learning website focused on improving basic
-              English speaking and communication skills for beginners. Designed
-              with a clean and user-friendly interface, ensuring smooth
-              experience across desktop and mobile devices. Developed within 50
-              days as part of academy training. Technologies Used HTML • CSS •
-              Responsive Web Design
-              <a
-                href="https://github.com/irfa127/Speak_Smart-static-website.git"
-                target="_blank"
-              >
-                <i class="fa-brands fa-github"></i> GitHub
-              </a>
+      </section>
+    </main>
 
-              <a
-                href="https://irfa127.github.io/Speak_Smart-static-website/"
-                target="_blank"
-              >
-                <i class="fa-solid fa-globe"></i> Live Demo
-              </a>
-            </p>
-          </div>
-        </div>
-        <div class="project_deatail">
-          <div class="project_deatailone">
-            <p>
-              A small self-learning full-stack web application built using HTML,
-              CSS, and JavaScript with responsive design, along with backend
-              APIs connected to a PostgreSQL database. This project helped me
-              understand frontend-backend integration, API handling, and basic
-              database operations.
-               <a
-                href="https://github.com/irfa127/Speak_Smart-static-website.git"
-                target="_blank"
-              >
-                <i class="fa-brands fa-github"></i> GitHub
-              </a>
-
-              <a
-                href="https://irfa127.github.io/Speak_Smart-static-website/"
-                target="_blank"
-              >
-                <i class="fa-solid fa-globe"></i> Live Demo
-              </a>
-            </p>
-          </div>
-        </div>
-        <div class="project_deatail">
-          <div class="project_deatailone">
-            <p>
-              ElderConnect is a responsive web application built to assist
-              elders by providing easy access to care-related services.
-              Developed using HTML, CSS, and responsive design, with backend API
-              integration to handle data operations. The project focuses on
-              usability, clean UI, and real-world problem solving.
-               <a
-                href="https://github.com/irfa127/ElderConnect.git"
-                target="_blank"
-              >
-                <i class="fa-brands fa-github"></i> GitHub
-              </a>
-
-              <a
-                href="https://irfa127.github.io/ElderConnect/"
-                target="_blank"
-              >
-                <i class="fa-solid fa-globe"></i> Live Demo
-              </a>
-            </p>
-          </div>
-        </div>
-        <div class="project_deatail">
-          <div class="project_deatailone">
-            <p>
-              A simple self-learning To-Do List application built using HTML,
-              CSS, and JavaScript, allowing users to add and manage tasks
-              through an interactive interface. This project helped me practice
-              DOM manipulation, event handling, and basic JavaScript logic.
-               <a
-                href="https://github.com/irfa127/Speak_Smart-static-website.git"
-                target="_blank"
-              >
-                <i class="fa-brands fa-github"></i> GitHub
-              </a>
-
-              <a
-                href="https://irfa127.github.io/Speak_Smart-static-website/"
-                target="_blank"
-              >
-                <i class="fa-solid fa-globe"></i> Live Demo
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div id="footer">
-        <h1>Let's Create Together</h1>
-
-        <div class="footer_content">
-          <div class="left">
-            <h3>Get In Touch</h3>
-
-            <div class="info_card">
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container footer-container">
+        <h2 class="footer-title">Let's Create Together</h2>
+        
+        <div class="contact-card-wrapper">
+          <div class="contact-info-card">
               <h4>Email</h4>
               <p>nasrinirfana42@gmail.com</p>
-            </div>
-
-            <div class="info_card">
+          </div>
+          <div class="contact-info-card">
               <h4>Phone</h4>
               <p>+91 8015956559</p>
-            </div>
-
-            <div class="info_card">
+          </div>
+          <div class="contact-info-card">
               <h4>Location</h4>
               <p>Thiruvarur, Tamil Nadu, India</p>
-            </div>
           </div>
         </div>
       </div>
-    </section>
+    </footer>
 
-    <!-- don't touch this side -->
-
-    <!-- <div class="count-particles">
-      <span class="js-count-particles">--</span> particles
-    </div> -->
-
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-    <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
-
+    <!-- ThreeJS Stats removed as per plan -->
     <script src="particle.js"></script>
   </body>
 </html>
