@@ -1,4 +1,3 @@
-/* Reset & Variables */
 :root {
   --primary-gradient: linear-gradient(40deg, rgb(215, 10, 10), rgb(148, 102, 102), rgb(188, 30, 186));
   --text-gradient: linear-gradient(40deg, rgb(213, 46, 46), rgb(52, 52, 142), rgb(61, 188, 61));
@@ -28,7 +27,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Particles Background */
+
 #particles-js {
   position: fixed;
   inset: 0;
@@ -42,7 +41,7 @@ canvas {
   display: block;
 }
 
-/* Header */
+
 .main-header {
   display: flex;
   justify-content: space-between;
@@ -86,7 +85,7 @@ canvas {
   text-decoration: underline;
 }
 
-/* Shared Styles */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -107,7 +106,7 @@ canvas {
   width: 100%;
 }
 
-/* Home Section */
+
 .section-home {
   display: flex;
   align-items: center;
@@ -150,15 +149,14 @@ canvas {
   font-weight: bold;
   text-decoration: none;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  /* Subtle border to match shadow */
+
   background: var(--text-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  /* The button text is gradient, but we need a background for the border? 
-     Original used a button with gradient text and shadow. */
+
   background-color: white;
-  /* Fallback */
+
 }
 
 .social-links {
@@ -196,13 +194,14 @@ canvas {
 
 .home-image img {
   width: 350px;
-  height: 350px;
-  border-radius: 50%;
+  height: 450px;
+  /* border-radius: 50%; */
   object-fit: cover;
+ 
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* About Section */
+
 .section-about {
   background-color: var(--bg-dark);
   color: var(--text-light);
@@ -239,10 +238,10 @@ canvas {
   color: var(--text-light);
 }
 
-/* Skills Section */
+
 .section-skills {
   background-color: aliceblue;
-  /* Matching original color */
+
   padding: 80px 0;
   text-align: center;
 }
@@ -273,7 +272,7 @@ canvas {
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
-  /* Square */
+
   transition: transform 0.3s;
 }
 
@@ -292,7 +291,7 @@ canvas {
   margin-bottom: 20px;
   font-size: 2rem;
   color: var(--accent-color);
-  /* Original styling mimic */
+
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -315,12 +314,12 @@ canvas {
   background: linear-gradient(40deg, rgb(215, 204, 204), rgb(190, 190, 201), rgb(207, 201, 207));
 }
 
-/* Projects Section */
+
 .section-projects {
   background-color: var(--bg-dark);
   color: white;
   padding: 80px 0;
-  /* Original had a very specific layout with a line */
+
 }
 
 .projects-wrapper {
@@ -328,7 +327,7 @@ canvas {
   max-width: 900px;
   margin: 0 auto;
   border-left: 4px solid #f6f6fb;
-  /* The timeline line */
+
   padding-left: 40px;
 }
 
@@ -337,17 +336,17 @@ canvas {
   margin-bottom: 60px;
 }
 
-/* The Icon on the line */
+
 .project-icon {
   position: absolute;
   left: -62px;
-  /* Locate exactly on the line */
+
   top: 0;
   width: 40px;
   height: 40px;
   background-color: #f6f6fb;
   border-radius: 5px;
-  /* Square with rounded corners per original */
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -394,7 +393,7 @@ canvas {
   color: #00aaff;
 }
 
-/* Footer / Contact */
+
 #contact {
   background-color: var(--bg-light);
   padding: 80px 20px;
@@ -419,7 +418,7 @@ canvas {
 .contact-card-wrapper {
   display: flex;
   justify-content: space-around;
-  /* Distribute evenly */
+
   flex-wrap: wrap;
   gap: 20px;
 }
@@ -444,7 +443,6 @@ canvas {
 }
 
 
-/* Responsive Design */
 @media (max-width: 900px) {
   .section-home {
     flex-direction: column-reverse;
@@ -473,13 +471,13 @@ canvas {
 
   .projects-wrapper {
     border-left: none;
-    /* Remove timeline on small screens */
+
     padding-left: 0;
   }
 
   .project-icon {
     display: none;
-    /* Hide timeline icons */
+
   }
 
   .project-card {
@@ -512,7 +510,7 @@ canvas {
   }
 }
 
-/* Mouse Scroll Animation */
+
 .scroll-down {
   position: absolute;
   bottom: 30px;
