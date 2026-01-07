@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Door Open Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Door container */
+.door-container {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* Doors */
+.door {
+  width: 50%;
+  height: 100%;
+  transition: transform 1.2s ease-in-out;
+}
+
+.left {
+  background: black;
+}
+
+.right {
+  background: white;
+}
+
+/* Button */
+.click-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 35px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  background: crimson;
+  color: white;
+  border-radius: 30px;
+  z-index: 20;
+}
+
+/* Open animation */
+.open .left {
+  transform: translateX(-100%);
+}
+
+.open .right {
+  transform: translateX(100%);
+}
+
+/* Portfolio page */
+.portfolio {
+  display: none;
+  height: 100vh;
+  background: #f4f4f4;
+  text-align: center;
+  padding-top: 150px;
+}
+
+.portfolio h1 {
+  font-size: 40px;
+}
+
+.portfolio p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+</style>
+<body>
+
+  <!-- Door Section -->
+  <div class="door-container" id="door">
+    <div class="door left"></div>
+    <div class="door right"></div>
+
+    <a href="index.html"><button class="click-btn" id="openBtn">Click Me</button></a>
+  </div>
+
+ 
+
+  <script text="type/"JavaScript>
+    const openBtn = document.getElementById("openBtn");
+const door = document.getElementById("door");
+const portfolio = document.getElementById("portfolio");
+
+openBtn.addEventListener("click", () => {
+  door.classList.add("open");
+
+  setTimeout(() => {
+    door.style.display = "none";
+    portfolio.style.display = "block";
+  }, 1200);
+});
+
+  </script>
+</body>
+</html>
