@@ -92,7 +92,8 @@ canvas {
   padding: 0 20px;
   width: 100%;
 }
-.container>h2{
+
+.container>h2 {
   margin-left: 200px;
 }
 
@@ -190,18 +191,84 @@ canvas {
 }
 
 .home-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+  position: relative;
 }
 
-.home-image img {
-  width: 350px;
-  height: 450px;
-  /* border-radius: 50%; */
+/* Spinning Neon Portal Effect */
+.img-box {
+  width: 380px;
+  height: 380px;
+  background: var(--bg-dark);
+  border-radius: 50%;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inner Spinning Ring */
+.img-box::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-top-color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+  animation: spin 6s linear infinite;
+  box-shadow: 0 0 20px var(--accent-color);
+  z-index: -1;
+}
+
+/* Outer Spinning Ring (Opposite Direction) */
+.img-box::after {
+  content: '';
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  right: -25px;
+  bottom: -25px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-left-color: #070808;
+  /* Cyan/Blue accent */
+  border-right-color: #1a1c1c;
+  animation: spin-reverse 10s linear infinite;
+  box-shadow: 0 0 20px #060118;
+  z-index: -2;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
- 
-  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  border: 4px solid var(--glass-border);
+  box-shadow: 0 0 30px rgba(171, 102, 102, 0.5);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 
@@ -290,15 +357,9 @@ canvas {
   object-fit: contain;
 }
 
-.soft-skills h3 {
-  margin-bottom: 20px;
-  font-size: 2rem;
-  color: var(--accent-color);
 
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+
+
 
 .skill-tags {
   display: flex;
@@ -396,55 +457,230 @@ canvas {
   color: #00aaff;
 }
 
+.section-skills {
+  padding: 5rem 10%;
 
-#contact {
-  background-color: var(--bg-light);
-  padding: 80px 20px;
-  position: relative;
-  z-index: 10;
 }
-
-.footer-container {
-  background: white;
-  padding: 50px;
-  border-radius: 11px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.footer-title {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 50px;
-}
-
-.contact-card-wrapper {
+.skills-grid {
   display: flex;
-  justify-content: space-around;
-
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 2rem;
+  margin-bottom: 4rem;
 }
 
-.contact-info-card {
-  border: 1px solid #ccc;
-  border-radius: 18px;
-  padding: 20px 40px;
+.skill-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 180px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  min-width: 250px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+
+  /* The "Laser" bottom border using the custom property */
+  box-shadow: 0 4px 0 0 var(--color);
 }
 
-.contact-info-card h4 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #333;
+.skill-card:hover {
+  transform: translateY(-10px) rotateX(10deg);
+  background: rgba(255, 255, 255, 0.08);
+  /* Neon Glow on hover */
+  box-shadow: 0 0 30px var(--color), 0 4px 0 0 var(--color);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
-.contact-info-card p {
-  font-size: 1rem;
-  color: #555;
+.icon-box {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--color);
+  /* filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); */
+  transition: transform 0.3s;
 }
 
+.skill-card:hover .icon-box {
+  transform: scale(1.1);
+}
+
+.skill-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.skill-info .percent {
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: block;
+  /* Gradient text that matches the skill color */
+  background: var(--color);
+  background-clip: text;
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  filter: drop-shadow(0 0 2px var(--color));
+}
+
+.soft-skills {
+  margin-top: 4rem;
+  text-align: center;
+  width: 1500px;
+
+}
+
+.soft-skills h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  background: var(--text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- Glowing Hexagon Grid (Communication Skills) --- */
+.comm-skills-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.comm-img-box {
+  flex: 1;
+  max-width: 350px;
+
+  /* Adjust based on image aspect ratio */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--glass-border);
+  transition: transform 0.3s, border-color 0.3s;
+  background: rgba(255, 255, 255, 0.03);
+  /* Glass backdrop */
+  backdrop-filter: blur(5px);
+}
+
+.comm-img-box:hover {
+  transform: scale(1.02);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 30px rgba(188, 30, 186, 0.3);
+}
+
+.comm-img-box img {
+  width: 100%;
+
+  height: auto;
+  display: block;
+}
+
+.hex-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  /* margin-top removed as layout handles spacing */
+  flex: 0 0 auto;
+}
+
+@media (max-width: 1100px) {
+  .comm-skills-layout {
+    flex-direction: column;
+  }
+
+  .comm-img-box {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  /* Reorder for mobile: Image 1 -> Content -> Image 2 is default, 
+     but maybe user wants images stacked? Let's keep flow. */
+}
+
+.hex-container {
+  width: 120px;
+  height: 130px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hex {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(5px);
+  /* Hexagon Shape Clip Path */
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+/* Neon Hexagon Border using Pseudo-element because borders don't work well with clip-path */
+.hex-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--primary-gradient);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  z-index: 1;
+  opacity: 0.5;
+  transition: opacity 0.3s, filter 0.3s;
+}
+
+.hex-container:hover .hex {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(0.95);
+}
+
+.hex-container:hover::before {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px rgba(188, 30, 186, 0.6));
+}
+
+.hex i {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hex span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hex small {
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  font-weight: 700;
+  margin-top: 5px;
+}
 
 @media (max-width: 900px) {
   .section-home {
@@ -578,4 +814,192 @@ canvas {
     transform: translateY(15px) rotate(45deg);
     opacity: 0;
   }
+}
+
+/* --- Team Project Section (Holographic Card) --- */
+.team-title {
+  margin-top: 5rem;
+  font-size: 2rem;
+  background: linear-gradient(90deg, #000000, #ff8c00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.team-project-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  /* Gold border for featured look */
+  border-radius: 20px;
+  width: 100%;
+  max-width: 900px;
+  padding: 3px;
+  /* For border gradient effect */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
+}
+
+.team-card-inner {
+  display: flex;
+  background: var(--bg-dark);
+  /* Inner background to hide card contents behind glassy border */
+  border-radius: 17px;
+  overflow: hidden;
+}
+
+.team-img-box {
+  flex: 1.2;
+  min-height: 300px;
+}
+
+.team-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-content {
+  flex: 1;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.badges {
+  margin-bottom: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffd700;
+  border: 1px solid #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.team-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.team-content p {
+  color: white;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.tech-stack-mini {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tech-stack-mini span {
+  font-size: 0.8rem;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+@media (max-width: 900px) {
+  .team-card-inner {
+    flex-direction: column;
+  }
+
+  .team-img-box {
+    max-height: 250px;
+  }
+}
+
+.team-project-container:nth-child(odd) .team-card-inner {
+  flex-direction: row-reverse;
+}
+
+.team-project-container:nth-child(even) .team-card-inner {
+  flex-direction: row;
+}
+
+.footer-container {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.footer-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  
+}
+
+.footer-subtitle {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 3rem;
+}
+
+.contact-card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.contact-info-card {
+  background: #fff;
+  padding: 2rem 1.8rem;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+}
+
+.icon-circle {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.contact-info-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+
+
+.contact-info-card a {
+  text-decoration: none;
+  color: inherit;
 }
