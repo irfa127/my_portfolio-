@@ -97,9 +97,9 @@ canvas {
   width: 100%;
 }
 
-.container>h2 {
+/* .container>h2 {
   margin-left: 200px;
-}
+} */
 
 .section-title {
   text-align: center;
@@ -274,7 +274,8 @@ canvas {
 .social-icons {
   display: flex;
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 100px;
+  margin-left: 500px;
 }
 
 .social-icons a {
@@ -650,73 +651,150 @@ canvas {
 
 }
 
+.section-skills {
+  padding: 100px 0;
+  background: var(--bg-dark);
+}
+
 .skills-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-bottom: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .skill-card {
+  position: relative;
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 2rem;
-  width: 180px;
-  height: 200px;
+  border-radius: 24px;
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  cursor: default;
-
-  /* The "Laser" bottom border using the custom property */
-  box-shadow: 0 4px 0 0 var(--color);
+  height: 300px;
+  justify-content: center;
 }
 
 .skill-card:hover {
-  transform: translateY(-10px) rotateX(10deg);
-  background: rgba(255, 255, 255, 0.08);
-  /* Neon Glow on hover */
-  box-shadow: 0 0 30px var(--color), 0 4px 0 0 var(--color);
-  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-15px) scale(1.02);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.icon-box {
+/* Radiant Progress Circle */
+.progress-ring {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.progress-ring svg {
+  width: 140px;
+  height: 140px;
+  transform: rotate(-90deg);
+}
+
+.progress-ring circle {
+  fill: transparent;
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-width: 8;
+}
+
+.progress-ring .progress-bar {
+  stroke: var(--color);
+  stroke-dasharray: 377;
+  /* 2 * PI * R (60) = 376.99 */
+  stroke-dashoffset: calc(377 - (377 * var(--percent)) / 100);
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 8px var(--color));
+  transition: stroke-dashoffset 1.5s ease-out;
+}
+
+.skill-card:hover .progress-bar {
+  filter: drop-shadow(0 0 15px var(--color));
+}
+
+.skill-card .icon-box {
+  position: absolute;
   font-size: 3rem;
-  margin-bottom: 1rem;
-  color: var(--color);
-  /* filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); */
-  transition: transform 0.3s;
+  color: #fff;
+  transition: all 0.4s ease;
+  z-index: 2;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
 }
 
 .skill-card:hover .icon-box {
-  transform: scale(1.1);
+  transform: scale(1.2);
+  color: var(--color);
+}
+
+.skill-info {
+  text-align: center;
+  z-index: 2;
 }
 
 .skill-info h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-main);
-  font-weight: 500;
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: 5px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .skill-info .percent {
-  font-size: 1.8rem;
+  font-size: 1rem;
   font-weight: 700;
-  display: block;
-  /* Gradient text that matches the skill color */
+  color: var(--color);
+  opacity: 0.8;
+}
+
+/* Background Dynamic Glow */
+.skill-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
   background: var(--color);
-  background-clip: text;
-  /* -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-  filter: drop-shadow(0 0 2px var(--color));
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.skill-card:hover .skill-glow {
+  opacity: 0.15;
+}
+
+/* Cybernetic Decoration Line */
+.skill-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.skill-card:hover::after {
+  transform: scaleX(1);
 }
 
 .soft-skills {

@@ -1,3 +1,30 @@
+// Intersection Observer for Skill Bar Animations
+const skillCards = document.querySelectorAll('.skill-card');
+const observerOptions = {
+    threshold: 0.2
+};
+
+const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const progressBar = entry.target.querySelector('.progress-bar');
+            if (progressBar) {
+                const percent = entry.target.style.getPropertyValue('--percent');
+                const offset = 377 - (377 * percent) / 100;
+                progressBar.style.strokeDashoffset = offset;
+            }
+            entry.target.classList.add('reveal');
+        }
+    });
+}, observerOptions);
+
+skillCards.forEach(card => {
+    // Set initial state to 0% fill
+    const progressBar = card.querySelector('.progress-bar');
+    if (progressBar) progressBar.style.strokeDashoffset = '377';
+    skillObserver.observe(card);
+});
+
 const cursorGlow = document.querySelector(".cursor-glow");
 
 document.addEventListener("mousemove", (e) => {
