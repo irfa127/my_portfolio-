@@ -10,24 +10,38 @@ const list = [
 
 let wordIndex = 0;
 let letterIndex = 0;
+let isDeleting = false;
 
 function showText() {
-  // Safe check if element exists
   if (!content) return;
 
-  content.textContent = "I am a " + list[wordIndex].slice(0, letterIndex);
+  const currentWord = list[wordIndex];
 
-  letterIndex++;
-
-  if (letterIndex > list[wordIndex].length) {
-    wordIndex = (wordIndex + 1) % list.length;
-    letterIndex = 0;
+  if (isDeleting) {
+    content.textContent = "I am a " + currentWord.slice(0, letterIndex - 1);
+    letterIndex--;
+  } else {
+    content.textContent = "I am a " + currentWord.slice(0, letterIndex + 1);
+    letterIndex++;
   }
 
-  setTimeout(showText, 150);
+  // Speed logic
+  let typeSpeed = isDeleting ? 100 : 200;
+
+  if (!isDeleting && letterIndex === currentWord.length) {
+    typeSpeed = 2000; // Pause at end
+    isDeleting = true;
+  } else if (isDeleting && letterIndex === 0) {
+    isDeleting = false;
+    wordIndex = (wordIndex + 1) % list.length;
+  }
+
+  setTimeout(showText, typeSpeed);
 }
 
-showText();
+document.addEventListener("DOMContentLoaded", showText);
+
+/* particles config */
 
 /* particles config */
 particlesJS("particles-js", {
