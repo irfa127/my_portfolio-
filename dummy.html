@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Irfana Nasrin | Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0a0a0f;
+      --cream: #f5f0e8;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --muted: #6b6878;
+      --surface: #12111a;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── CURSOR ── */
+    .cursor {
+      position: fixed;
+      width: 10px; height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transition: transform 0.1s;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transition: transform 0.3s ease, opacity 0.3s;
+      opacity: 0.5;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated gradient orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: float 8s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: var(--gold); top: -150px; left: -100px; animation-delay: 0s; }
+    .orb-2 { width: 350px; height: 350px; background: #4361ee; bottom: -100px; right: 100px; animation-delay: 3s; }
+    .orb-3 { width: 200px; height: 200px; background: var(--gold-light); top: 40%; left: 30%; animation-delay: 5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    /* Grid lines */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 80px 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      width: fit-content;
+      animation: fadeSlideUp 0.8s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+      animation: fadeSlideUp 0.8s 0.2s ease both;
+    }
+
+    .hero-name span {
+      display: block;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-role {
+      font-size: 1.1rem;
+      color: var(--gold);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin-bottom: 28px;
+      height: 1.6em;
+      overflow: hidden;
+      animation: fadeSlideUp 0.8s 0.4s ease both;
+    }
+
+    #typewriter {
+      display: inline-block;
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--gold);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 380px;
+      margin-bottom: 48px;
+      font-weight: 300;
+      animation: fadeSlideUp 0.8s 0.6s ease both;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      animation: fadeSlideUp 0.8s 0.8s ease both;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--ink);
+      border: none;
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--ink);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary:hover { color: var(--gold); }
+    .btn-primary span { position: relative; z-index: 1; }
+
+    .btn-outline {
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--cream);
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 80px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: fadeSlideUp 0.8s 1s ease both;
+    }
+
+    .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gold);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* Hero right - image */
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      padding: 80px 80px 80px 40px;
+    }
+
+    .image-frame {
+      position: relative;
+      width: 380px;
+      height: 480px;
+      animation: fadeSlideUp 1s 0.5s ease both;
+    }
+
+    .image-frame::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 2px;
+      background: linear-gradient(135deg, var(--gold) 0%, transparent 50%, var(--gold) 100%);
+      z-index: 0;
+    }
+
+    .image-frame::after {
+      content: '';
+      position: absolute;
+      top: 20px; left: 20px; right: -20px; bottom: -20px;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 2px;
+      z-index: -1;
+    }
+
+    .image-frame img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+      filter: grayscale(20%) contrast(1.05);
+    }
+
+    .image-overlay-tag {
+      position: absolute;
+      bottom: -16px;
+      left: -20px;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 12px 20px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      z-index: 3;
+    }
+
+    /* Stats strip */
+    .stats-strip {
+      background: var(--surface);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      padding: 24px 80px;
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+    }
+
+    .stat-item {
+      text-align: center;
+      animation: fadeSlideUp 0.6s ease both;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gold);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 120px 32px 40px; }
+      .hero-right { padding: 20px 32px 60px; }
+      .image-frame { width: 100%; max-width: 320px; height: 380px; }
+      .scroll-indicator { left: 32px; }
+      .stats-strip { padding: 24px 32px; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <section class="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="hero-left">
+      <div class="hero-badge">Available for opportunities</div>
+
+      <h1 class="hero-name">
+        <span>Irfana</span>
+        <span>Nasrin</span>
+      </h1>
+
+      <div class="hero-role">
+        <span id="typewriter"></span><span class="cursor-blink"></span>
+      </div>
+
+      <p class="hero-tagline">
+        Currently learning web development with a focus on clean UI, great user experience, and writing better code every day.
+      </p>
+
+      <div class="hero-cta">
+        <a href="about.html#about" class="btn-primary" onclick="handleNav(event, this)">
+          <span>View Portfolio</span>
+          <span>→</span>
+        </a>
+        <a href="mailto:nasrinirfana42@gmail.com" class="btn-outline">Get in Touch</a>
+      </div>
+
+      <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        Scroll to explore
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="image-frame">
+        <img src="assets/image copy 21.png" alt="Irfana Nasrin" />
+        <div class="image-overlay-tag">Full Stack Student</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-num" data-count="3">0</span>
+      <span class="stat-label">Projects Built</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-count="6">0</span>
+      <span class="stat-label">Technologies</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-count="1">0</span>
+      <span class="stat-label">Award Won</span>
+    </div>
+  </div>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx - 5 + 'px';
+      cursor.style.top = my - 5 + 'px';
+    });
+
+    function animateRing() {
+      rx += (mx - rx - 18) * 0.12;
+      ry += (my - ry - 18) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Typewriter
+    const roles = ['Full Stack Developer', 'Frontend Enthusiast', 'Problem Solver', 'UI/UX Explorer'];
+    let ri = 0, ci = 0, deleting = false;
+    const tw = document.getElementById('typewriter');
+
+    function type() {
+      const word = roles[ri];
+      tw.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
+      let speed = deleting ? 60 : 110;
+      if (!deleting && ci > word.length) { speed = 2200; deleting = true; }
+      else if (deleting && ci < 0) { deleting = false; ri = (ri + 1) % roles.length; ci = 0; speed = 300; }
+      setTimeout(type, speed);
+    }
+    type();
+
+    // Counter animation
+    const counters = document.querySelectorAll('.stat-num');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const target = +e.target.dataset.count;
+          let curr = 0;
+          const step = target / 40;
+          const timer = setInterval(() => {
+            curr += step;
+            if (curr >= target) { curr = target; clearInterval(timer); }
+            e.target.textContent = Math.floor(curr) + '+';
+          }, 40);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => obs.observe(c));
+
+    // Page transition
+    function handleNav(e, el) {
+      e.preventDefault();
+      document.body.style.transition = 'opacity 0.5s';
+      document.body.style.opacity = '0';
+      setTimeout(() => window.location.href = el.href, 500);
+    }
+  </script>
+</body>
+</html>
